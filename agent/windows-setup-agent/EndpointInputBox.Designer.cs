@@ -62,7 +62,6 @@
 			// 
 			// txtHost
 			// 
-			this.txtHost.Enabled = false;
 			this.txtHost.Location = new System.Drawing.Point(101, 103);
 			this.txtHost.Name = "txtHost";
 			this.txtHost.Size = new System.Drawing.Size(251, 20);
@@ -70,7 +69,6 @@
 			// 
 			// txtPort
 			// 
-			this.txtPort.Enabled = false;
 			this.txtPort.Location = new System.Drawing.Point(101, 134);
 			this.txtPort.Name = "txtPort";
 			this.txtPort.Size = new System.Drawing.Size(100, 20);
