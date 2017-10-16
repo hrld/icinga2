@@ -123,6 +123,8 @@
 			// chkConnect
 			// 
 			this.chkConnect.AutoSize = true;
+			this.chkConnect.Checked = true;
+			this.chkConnect.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.chkConnect.Location = new System.Drawing.Point(18, 73);
 			this.chkConnect.Name = "chkConnect";
 			this.chkConnect.Size = new System.Drawing.Size(141, 17);
