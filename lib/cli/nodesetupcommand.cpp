@@ -247,7 +247,10 @@ int NodeSetupCommand::SetupNode(const boost::program_options::variables_map& vm,
 		return 1;
 	}
 
-	String ticket = vm["ticket"].as<std::string>();
+	String ticket;
+
+	if (vm.count("ticket"))
+		ticket = vm["ticket"].as<std::string>();
 
 	if (ticket.IsEmpty()) {
 		Log(LogInformation, "cli")
@@ -337,8 +340,11 @@ int NodeSetupCommand::SetupNode(const boost::program_options::variables_map& vm,
 
 	Log(LogInformation, "cli", "Requesting a signed certificate from the parent Icinga node.");
 
-	if (PkiUtility::RequestCertificate(master_host, master_port, key, cert, ca, trustedcert, ticket) != 0) {
-		Log(LogCritical, "cli", "Failed to request certificate from parent Icinga node.");
+	if (PkiUtility::RequestCertificate(master_host, master_port, key, cert, ca, trustedcert, ticket) > 0) {
+		Log(LogCritical, "cli")
+		    << "Failed to fetch signed certificate from parent Icinga node '"
+		    << master_host << ", "
+		    << master_port << "'. Please try again.";
 		return 1;
 	}
 
